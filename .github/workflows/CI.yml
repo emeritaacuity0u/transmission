@@ -3,7 +3,8 @@ name: CI
 on:
   push:
     branches:
-      - main
+      - xcode-build
+  workflow_dispatch:  # This allows manual triggering
 
 jobs:
   build:
