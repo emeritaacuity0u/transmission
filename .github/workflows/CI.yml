@@ -21,4 +21,4 @@ jobs:
       run: gem install xcpretty
 
     - name: Build project
-      run: xcodebuild -project transmission/transmission.xcodeproj -scheme YourSchemeName -sdk iphonesimulator -destination 'platform=iOS Simulator,name=iPhone 15 Pro' clean build | xcpretty
+      run: xcodebuild -project Transmission.xcodeproj/project.pbxproj -scheme YourSchemeName -sdk iphonesimulator -destination 'platform=iOS Simulator,name=iPhone 15 Pro' clean build | xcpretty
