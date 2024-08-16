@@ -20,6 +20,14 @@ jobs:
           default=$(echo $scheme_list | ruby -e "require 'json'; puts JSON.parse(STDIN.gets)['project']['targets'][0]")
           echo $default | cat >default
           echo Using default scheme: $default
+      - name: Fix Script Permissions
+        run: |
+          chmod +x /Users/runner/Library/Developer/Xcode/DerivedData/Transmission-heesbguwjjmasidhwvitbwbyojzr/Build/Intermediates.noindex/Transmission.build/Debug/psl.build/Script-C3D9062C27B7F4FE00EF2386.sh
+          chmod +x /Users/runner/Library/Developer/Xcode/DerivedData/Transmission-heesbguwjjmasidhwvitbwbyojzr/Build/Intermediates.noindex/Transmission.build/Debug/miniupnp.build/Script-A2305097100C0293003FDB0C.sh
+      - name: Clean project
+        run: xcodebuild clean -project Transmission.xcodeproj
+      - name: Use Legacy Build System
+        run: xcodebuild -project Transmission.xcodeproj -scheme Transmission -UseModernBuildSystem=NO
       - name: Build
         env:
           scheme: ${{ 'default' }}
